@@ -1,0 +1,86 @@
+{% extends 'layout/base.html' %} 
+{% block content %}
+
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      {% comment %} looping for baris {% endcomment %}
+      {% for content in data %}
+      <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          {% comment %} {% if content.status == 'Good' %}
+          <div class="card-header card-header-success card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">done_all</i>
+            </div>
+            <p class="card-category">{{content.name}}</p>
+            <h3 class="card-title">
+                {{content.value}}
+                <span>{{content.unit}}</span>
+            </h3>
+          </div>
+          {% elif content.status == 'Suspect' %}
+          <div class="card-header card-header-warning card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">info_outline</i>
+            </div>
+            <p class="card-category">{{content.name}}</p>
+            <h3 class="card-title">
+                {{content.value}}
+                <span>{{content.unit}}</span>
+            </h3>
+          </div>
+          {% else %}
+          <div class="card-header card-header-danger card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">info_outline</i>
+            </div>
+            <p class="card-category">{{content.name}}</p>
+            <h3 class="card-title">
+                {{content.value}}
+                <span>{{content.unit}}</span>
+            </h3>
+          </div>
+          {% endif %} {% endcomment %}
+          {% if content.status == 'Good' %}
+          <div class="card-header card-header-success card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">done_all</i>
+            </div>
+          {% elif content.status == 'Suspect' %}
+          <div class="card-header card-header-warning card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">info_outline</i>
+            </div>
+          {% else %}
+          <div class="card-header card-header-danger card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">info_outline</i>
+            </div>
+          {% endif %}
+            <p class="card-category">{{content.name}}</p>
+            <h3 class="card-title">
+                {{content.value}}
+                {% if content.name == 'Temperature' %}
+                <span>&#176;{{content.unit}}</span>
+                {% elif content.name == 'Solar Rad.' %}
+                <span>Wm <sup>-2</sup></span>
+                {% elif content.name == 'Wind Dir.' %}
+                <span>&#176;</span>
+                {% else %}
+                <span>{{content.unit}}</span>
+                {% endif %}
+            </h3>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">update</i> Updated at {{time.awsTime}}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock content %}

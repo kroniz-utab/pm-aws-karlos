@@ -1,0 +1,85 @@
+{% extends 'layout/base.html' %} 
+{% block content %}
+
+<div class="content">
+  <div class="container-fluid">
+    <!-- Tabel dibawah -->
+    <div class="card">
+      <!-- card header -->
+      <div class="card-header-primary card-header">
+        <h4 class="card-title">Prediksi Kerusakan</h4>
+        <p class="card-category">
+          Prediksi Kerusakan Sensor dalam 12 Jam kedepan
+        </p>
+      </div>
+      <!-- card body tempat tabel -->
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table">
+            <!-- table header -->
+            <thead class="text-primary">
+              <tr>
+                <th class="text-center" scope="col">No.</th>
+                <th scope="col">Sensor</th>
+                <th scope="col" class="text-center">Quality Control</th>
+                <th scope="col" class="text-center">Kondisi Status</th>
+                <th scope="col" class="text-center">Updated at</th>
+                <th scope="col" class="text-center">Kondisi</th>
+              </tr>
+            </thead>
+            <!-- table body -->
+            <tbody>
+              {% for dt in detail %}
+              <tr>
+                <td class="text-center" style="width: 5%">{{forloop.counter}}</td>
+                <td>
+                  <strong class="h4">{{dt.name}}</strong><br />
+                  <small>{{dt.sensor}}</small>
+                </td>
+                <td class="text-center" style="width: 5%">
+                  {% if dt.status == 'Good' %}
+                  <span class="badge bg-success text-white h6">{{dt.status}}</span>
+                  {% elif dt.status == 'Suspect' %}  
+                  <span class="badge bg-warning h6">{{dt.status}}</span>
+                  {% else %}
+                  <span class="badge bg-danger text-white h6">{{dt.status}}</span>
+                  {% endif %}
+                  
+                </td>
+                <td class="text-center">
+                  {% if dt.pred_condition >= 75 %}
+                  <span class="badge bg-success text-white h6">Normal</span>
+                  {% elif dt.pred_condition >= 50 and dt.pred_condition < 75 %}
+                  <span class="badge bg-warning h6">Warning</span>
+                  {% else %}
+                  <span class="badge bg-danger text-white h6">Damaged</span>
+                  {% endif %}
+                </td>
+                <td class="text-center h6">{{time.awsTime}}</td>
+                <td class="text-center">
+                  <div class="progress-container">
+                    <span class="progress-badge h6">{{dt.pred_condition}} %</span>
+                    <div class="progress">
+                      {% if dt.pred_condition >= 75 %}
+                      <div class="progress-bar progress-bar-striped bg-success" role="progressbar" aria-valuenow="20"
+                        aria-valuemin="0" aria-valuemax="100" style="width: {{dt.pred_condition}}%"></div>
+                      {% elif dt.pred_condition >= 50 and dt.pred_condition < 75 %}
+                      <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" aria-valuenow="20"
+                        aria-valuemin="0" aria-valuemax="100" style="width: {{dt.pred_condition}}%"></div>
+                      {% else %}
+                      <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" aria-valuenow="20"
+                        aria-valuemin="0" aria-valuemax="100" style="width: {{dt.pred_condition}}%"></div>
+                      {% endif %}
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
