@@ -20,23 +20,28 @@
 
 <body class="">
     <div class="wrapper">
-        <div class="sidebar" data-color="purple" data-background-color="white"
+        <div class="sidebar" data-color="azure" data-background-color="white"
             data-image="{% static 'img/sidebar-1.jpg' %}">
             <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
         Tip 2: you can also add an image using data-image tag
     -->
+
             <div class="logo">
-                <a href="#" class="simple-text logo-normal">AWS Karangploso</a>
+
+                <a href="#" class="simple-text logo-normal">
+                    <img src="{% static 'img/logo_bmkg.png' %}" alt="logo" height="40" class="float">
+                    &nbsp; &nbsp;AWS Karangploso
+                </a>
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     {% if request.path == '/' %}
                     <li class="nav-item active">
-                    {% else %}
+                        {% else %}
                     <li class="nav-item">
-                    {% endif %}
+                        {% endif %}
                         <a class="nav-link" href="{% url 'dashboard' %}">
                             <i class="material-icons">dashboard</i>
                             <p>Dashboard</p>
@@ -44,9 +49,9 @@
                     </li>
                     {% if request.path == '/report/' %}
                     <li class="nav-item active">
-                    {% else %}
+                        {% else %}
                     <li class="nav-item">
-                    {% endif %}
+                        {% endif %}
                         <a class="nav-link" href="{% url 'report' %}">
                             <i class="material-icons">content_paste</i>
                             <p>Report</p>
@@ -60,7 +65,11 @@
             <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
+                        {% if request.path == '/' %}
                         <a class="navbar-brand h3" href="#">Predictive Maintenance Dashboard</a>
+                        {% elif request.path == '/report/' %}
+                        <a class="navbar-brand h3" href="#">Predictive Maintenance Report</a>
+                        {% endif %}
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
                         aria-expanded="false" aria-label="Toggle navigation">

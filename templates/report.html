@@ -1,4 +1,4 @@
-{% extends 'layout/base.html' %} 
+{% extends 'layout/base.html' %}
 {% block content %}
 
 <div class="content">
@@ -6,7 +6,7 @@
     <!-- Tabel dibawah -->
     <div class="card">
       <!-- card header -->
-      <div class="card-header-primary card-header">
+      <div class="card-header-info card-header">
         <h4 class="card-title">Prediksi Kerusakan</h4>
         <p class="card-category">
           Prediksi Kerusakan Sensor dalam 12 Jam kedepan
@@ -39,12 +39,11 @@
                 <td class="text-center" style="width: 5%">
                   {% if dt.status == 'Good' %}
                   <span class="badge bg-success text-white h6">{{dt.status}}</span>
-                  {% elif dt.status == 'Suspect' %}  
+                  {% elif dt.status == 'Suspect' %}
                   <span class="badge bg-warning h6">{{dt.status}}</span>
                   {% else %}
                   <span class="badge bg-danger text-white h6">{{dt.status}}</span>
                   {% endif %}
-                  
                 </td>
                 <td class="text-center">
                   {% if dt.pred_condition >= 75 %}

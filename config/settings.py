@@ -37,8 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_inlinecss',
     'dashboard',
-    'gatherapp'
+    'gatherapp',
+    'reportsapp',
 ]
 
 MIDDLEWARE = [
@@ -127,6 +129,8 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
 
+STATIC_ROOT = BASE_DIR / 'var/staticfiles'
+
 # buat upload image
 # MEDIA_URL = '/media/'
 # MEDIA_ROOT = BASE_DIR / 'media'
@@ -135,3 +139,11 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# EMAIL SETTINGS
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'ade.hermawan.fajri@stmkg.ac.id'
+EMAIL_HOST_PASSWORD = 'Defa0818088'
