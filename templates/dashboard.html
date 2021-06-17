@@ -4,44 +4,10 @@
 <div class="content">
   <div class="container-fluid">
     <div class="row">
-      {% comment %} looping for baris {% endcomment %}
+      {% comment %} looping for data {% endcomment %}
       {% for content in data %}
       <div class="col-lg-4 col-md-6 col-sm-6">
         <div class="card card-stats">
-          {% comment %} {% if content.status == 'Good' %}
-          <div class="card-header card-header-success card-header-icon">
-            <div class="card-icon">
-              <i class="material-icons">done_all</i>
-            </div>
-            <p class="card-category">{{content.name}}</p>
-            <h3 class="card-title">
-                {{content.value}}
-                <span>{{content.unit}}</span>
-            </h3>
-          </div>
-          {% elif content.status == 'Suspect' %}
-          <div class="card-header card-header-warning card-header-icon">
-            <div class="card-icon">
-              <i class="material-icons">info_outline</i>
-            </div>
-            <p class="card-category">{{content.name}}</p>
-            <h3 class="card-title">
-                {{content.value}}
-                <span>{{content.unit}}</span>
-            </h3>
-          </div>
-          {% else %}
-          <div class="card-header card-header-danger card-header-icon">
-            <div class="card-icon">
-              <i class="material-icons">info_outline</i>
-            </div>
-            <p class="card-category">{{content.name}}</p>
-            <h3 class="card-title">
-                {{content.value}}
-                <span>{{content.unit}}</span>
-            </h3>
-          </div>
-          {% endif %} {% endcomment %}
           {% if content.status == 'Good' %}
           <div class="card-header card-header-success card-header-icon">
             <div class="card-icon">

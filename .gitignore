@@ -1,6 +1,8 @@
 db.sqlite3
+aws.sqlite3
 config/settings.py
 */__pycache__
 */migrations
 dashboard/migrations
 var/staticfiles
+public

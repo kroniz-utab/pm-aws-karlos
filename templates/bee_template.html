@@ -253,12 +253,14 @@
 															</tr>
 														</thead>
 														<tbody>
+															{% for d in data %}
 															<tr>
-																<td>Cell</td>
-																<td>Cell</td>
-																<td>Cell</td>
-																<td>Cell</td>
+																<td>{{d.name}}</td>
+																<td>{{d.pred_condition}}</td>
+																<td>0</td>
+																<td>Baik</td>
 															</tr>
+															{% endfor %}
 														</tbody>
 													</table>
 												</div>

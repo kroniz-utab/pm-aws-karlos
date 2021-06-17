@@ -1,4 +1,5 @@
 absl-py==0.12.0
+APScheduler==3.7.0
 asgiref==3.3.4
 astunparse==1.6.3
 beautifulsoup4==4.9.3
@@ -50,6 +51,7 @@ tensorflow-estimator==2.5.0
 termcolor==1.1.0
 threadpoolctl==2.1.0
 typing-extensions==3.7.4.3
+tzlocal==2.1
 urllib3==1.26.5
 Werkzeug==2.0.1
 wrapt==1.12.1

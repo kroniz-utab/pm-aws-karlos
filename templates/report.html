@@ -17,14 +17,14 @@
         <div class="table-responsive">
           <table class="table">
             <!-- table header -->
-            <thead class="text-primary">
+            <thead class="text-info">
               <tr>
                 <th class="text-center" scope="col">No.</th>
                 <th scope="col">Sensor</th>
                 <th scope="col" class="text-center">Quality Control</th>
-                <th scope="col" class="text-center">Kondisi Status</th>
+                <th scope="col" class="text-center">Condition Status</th>
                 <th scope="col" class="text-center">Updated at</th>
-                <th scope="col" class="text-center">Kondisi</th>
+                <th scope="col" class="text-center">Condition</th>
               </tr>
             </thead>
             <!-- table body -->
@@ -54,7 +54,7 @@
                   <span class="badge bg-danger text-white h6">Damaged</span>
                   {% endif %}
                 </td>
-                <td class="text-center h6">{{time.awsTime}}</td>
+                <td class="text-center h6">{{dt.created_at}}</td>
                 <td class="text-center">
                   <div class="progress-container">
                     <span class="progress-badge h6">{{dt.pred_condition}} %</span>
