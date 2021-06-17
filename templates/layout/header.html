@@ -39,9 +39,9 @@
                 <ul class="nav">
                     {% if request.path == '/' %}
                     <li class="nav-item active">
-                        {% else %}
+                    {% else %}
                     <li class="nav-item">
-                        {% endif %}
+                    {% endif %}
                         <a class="nav-link" href="{% url 'dashboard' %}">
                             <i class="material-icons">dashboard</i>
                             <p>Dashboard</p>
