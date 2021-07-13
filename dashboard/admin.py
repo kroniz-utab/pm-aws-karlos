@@ -46,5 +46,5 @@ class ChAdmin(admin.ModelAdmin):
 
 @admin.register(AwsData)
 class AwsAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'awsTime', 'temp', 'rh', 'press', 'solrad', 'winddir', 'windspeed', 'ch')
+    list_display = ('pk', 'awsTime', 'temp', 'rh', 'press', 'solrad', 'winddir', 'windspeed', 'ch', 'created_at')
     list_filter = ('created_at', )
