@@ -41,7 +41,7 @@ class Pressure(models.Model):
     status = models.CharField(max_length=50, default='Good')
     pred_condition = models.DecimalField(max_digits=5, decimal_places=2, default=100.00)
     name = models.CharField(max_length=50, default='Air Pressure', null=True, blank=True)
-    unit = models.CharField(max_length=50, default='Pa', null=True, blank=True)
+    unit = models.CharField(max_length=50, default='mbar', null=True, blank=True)
     sensor = models.CharField(max_length=50, default='RM Young 61302V', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

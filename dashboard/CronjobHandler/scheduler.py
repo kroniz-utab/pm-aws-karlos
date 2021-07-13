@@ -9,5 +9,5 @@ def start():
     # scheduler.add_job(html_email, 'cron', minute='*/2')
     # scheduler.add_job(coba_update, 'cron', minute='2-52/10') # Job for gathering from Iot
     # scheduler.add_job(html_email, 'cron', minute='53', hour='23') # Job for send email report
-    scheduler.add_job(testing, 'cron', day=13, month=7, hour=12)
+    scheduler.add_job(testing, 'cron', day=13, month=7, hour=15)
     scheduler.start()
