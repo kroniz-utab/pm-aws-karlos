@@ -162,9 +162,9 @@ def just_class(awstime, temp_now, rh_now, pa_now, sr_now, ws_now, wd_now, ch_now
             save_val_only(ch, ch_now, hour_class, is_rainy)
         else:
             cds = Precipitaion.objects.all()
-            cdf = newdf(cds, ch_now, hour_class, is_rainy, True)
+            cdf = newdf(cds, ch_now, hour_class, is_rainy, True, is_ch=True)
             ccdf = cdf.tail(3)
-            ch_qc = class_pred(ccdf, ch_scaler, ch_class, 3, False)
+            ch_qc = class_pred(ccdf, ch_scaler, ch_class, 3, False, is_ch=True)
             ch_translate = translate_class(ch_qc, is_categorical=False)
 
             save_no_pred(ch, ch_now, hour_class, is_rainy, ch_translate)
@@ -310,11 +310,11 @@ def full_system(awstime, temp_now, rh_now, pa_now, sr_now, ws_now, wd_now, ch_no
             save_val_only(ch, ch_now, hour_class, is_rainy)
         else:
             cds = Precipitaion.objects.all()
-            cdf = newdf(cds, ch_now, hour_class, is_rainy, True)
+            cdf = newdf(cds, ch_now, hour_class, is_rainy, True, is_ch=True)
             ccdf = cdf.tail(3)
-            ch_qc = class_pred(ccdf, ch_scaler, ch_class, 3, False)
+            ch_qc = class_pred(ccdf, ch_scaler, ch_class, 3, False, is_ch=True)
             ch_translate = translate_class(ch_qc, is_categorical=False)
-            ch_point = predict_qc(ch_lstm, ch_class, ch_scaler, cdf, awstime, 3, 3, False, is_rainy)
+            ch_point = predict_qc(ch_lstm, ch_class, ch_scaler, cdf, awstime, 3, 3, False, is_rainy, is_ch=True)
             ch_point = ch_point * 100
 
             save_all(ch, ch_now, hour_class, is_rainy, ch_translate, ch_point)

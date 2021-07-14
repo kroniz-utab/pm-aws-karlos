@@ -110,9 +110,9 @@ def from_dataframe(dataframe, idx):
     return timestamp, temp, rh, pa, sr, ws, wd, ch
 
 
-def class_pred(dataframe, scaler_dir, class_dir, class_window, is_categorical=True):
+def class_pred(dataframe, scaler_dir, class_dir, class_window, is_categorical=True, is_ch=False):
     df = dataframe.copy()
-    seq = sequence_maker(df, class_window, True)
+    seq = sequence_maker(df, class_window, True, is_ch)
 
     scaler = load(open(scaler_dir, 'rb'))
     seq[seq.columns] = scaler.transform(seq[seq.columns])
@@ -128,7 +128,7 @@ def class_pred(dataframe, scaler_dir, class_dir, class_window, is_categorical=Tr
     
     return res
 
-def predict_qc(lstm_dir, class_dir, scaler_dir, full_dataframe, time_last, window_class=18, window_lstm=144, is_categorical=True, is_rainy=1):
+def predict_qc(lstm_dir, class_dir, scaler_dir, full_dataframe, time_last, window_class=18, window_lstm=144, is_categorical=True, is_rainy=1, is_ch=False):
     df = full_dataframe.copy()
 
     _datain = []
@@ -157,7 +157,7 @@ def predict_qc(lstm_dir, class_dir, scaler_dir, full_dataframe, time_last, windo
     
     new_df = pd.DataFrame({'value':y_pred, 'hour_class':hour_list, 'is_rainy':is_rainy})
 
-    pred_class = class_pred(new_df, scaler_dir, class_dir, window_class, is_categorical)
+    pred_class = class_pred(new_df, scaler_dir, class_dir, window_class, is_categorical, is_ch)
 
     if is_categorical:
         y_good = [g for g in pred_class if g == 1]
