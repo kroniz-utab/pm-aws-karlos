@@ -153,8 +153,8 @@ def just_class(awstime, temp_now, rh_now, pa_now, sr_now, ws_now, wd_now, ch_now
 
     # ============ Precipitaion =================
     # ch file dir
-    ch_scaler = 'scaler/sr_features_18.pkl'
-    ch_class = 'model/classification/sr_classification.h5'
+    ch_scaler = 'scaler/ch_scaler_3ft.pkl'
+    ch_class = 'model/classification/ch_classification.h5'
 
     ch = Precipitaion()
     if hour_class == 0 and minute_val == 0:
@@ -300,8 +300,8 @@ def full_system(awstime, temp_now, rh_now, pa_now, sr_now, ws_now, wd_now, ch_no
 
     # ============ Precipitaion =================
     # ch file dir
-    ch_scaler = 'scaler/sr_features_18.pkl'
-    ch_class = 'model/classification/sr_classification.h5'
+    ch_scaler = 'scaler/ch_scaler_3ft.pkl'
+    ch_class = 'model/classification/ch_classification.h5'
     ch_lstm = 'model/prediction/ch_pred_model.h5'
 
     ch = Precipitaion()
