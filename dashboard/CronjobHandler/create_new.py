@@ -9,7 +9,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 
-def sequence_maker(dataframe, window=6, dropna=True):
+def sequence_maker(dataframe, window=6, dropna=True, is_ch=False):
     df = dataframe.copy()
     target = df.columns[0]
 
@@ -21,10 +21,15 @@ def sequence_maker(dataframe, window=6, dropna=True):
     else:
         df = df.fillna(0)
 
-    result = df[[f'{target}{i}' for i in range(window - 1, 0, -1)]]
-    result.loc[:, target] = df.loc[:, target]
-    result.loc[:, 'hour_class'] = df.loc[:, 'hour_class']
-    result.loc[:, 'is_rainy'] = df.loc[:, 'is_rainy']
+    if is_ch:
+        result = df[[f'{target}{i}' for i in range(window - 1, 0, -1)]]
+        result.loc[:, target] = df.loc[:, target]
+        result.loc[:, 'is_rainy'] = df.loc[:, 'is_rainy']
+    else:
+        result = df[[f'{target}{i}' for i in range(window - 1, 0, -1)]]
+        result.loc[:, target] = df.loc[:, target]
+        result.loc[:, 'hour_class'] = df.loc[:, 'hour_class']
+        result.loc[:, 'is_rainy'] = df.loc[:, 'is_rainy']
 
     return result
 
